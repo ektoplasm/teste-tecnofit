@@ -1,0 +1,44 @@
+services:
+  php:
+    build:
+      dockerfile: ./docker/php/Dockerfile
+      context: .
+    container_name: php
+    env_file: ./docker/dev.env
+    volumes:
+      - ./src:/var/www/html:rw
+    depends_on:
+      - db
+    networks:
+      - tecnofit
+
+  db:
+    image: mysql:8.0
+    container_name: db
+    env_file: ./docker/dev.env
+    volumes:
+      - ./docker/db/dataimport.sql:/docker-entrypoint-initdb.d/dataimport.sql
+      - db_data:/var/lib/mysql
+    networks:
+      - tecnofit
+
+  web:
+    image: nginx:stable-alpine
+    container_name: web
+    env_file: ./docker/dev.env
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html:rw
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - tecnofit
+
+volumes:
+  db_data:
+
+networks:
+  tecnofit:
+    driver: bridge

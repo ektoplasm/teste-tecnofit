@@ -1,0 +1,1 @@
+{"version":1,"defects":{"MovementControllerTest::testShouldRReturn404Error":7},"times":{"MovementControllerTest::testShouldReturnDeadliftMovementInfo":0.004,"MovementControllerTest::testShouldRReturn404Error":0.003,"MovementControllerTest::testShouldReturn404Error":0.002,"MovementControllerTest::testCorrectRankingOrder":0.008}}
