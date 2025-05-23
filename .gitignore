@@ -1,0 +1,23 @@
+# Docker
+*.log
+*.pid
+*.seed
+*.pid.lock
+docker-compose.override.yml
+.env
+.env.*
+
+# PHPUnit
+.phpunit.result.cache
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.tmp
